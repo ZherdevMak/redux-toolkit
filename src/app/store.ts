@@ -22,7 +22,8 @@ export const store = configureStore({
         .prepend(thunkMiddleware)
 });
 // определить автоматически тип всего объекта состояния
-export type AppRootStateType = ReturnType<typeof rootReducer>
+export type RootReducerType = typeof rootReducer
+export type AppRootStateType = ReturnType<RootReducerType>
 export type AppDispatch = ThunkDispatch<AppRootStateType, unknown, AnyAction>
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppRootStateType, unknown, AnyAction>
 

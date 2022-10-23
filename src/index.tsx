@@ -1,17 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import App from './app/App';
 import {store} from './app/store';
 import {Provider} from 'react-redux';
 import {createRoot} from "react-dom/client";
+import { BrowserRouter } from 'react-router-dom';
 
 const container = document.getElementById('root');
 const root = createRoot(container!); // createRoot(container!) if you use TypeScript
 root.render(
   <Provider store={store}>
-    <App/>
+    <BrowserRouter>
+    <App demo = {false}/>
+    </BrowserRouter>
   </Provider>);
 
 

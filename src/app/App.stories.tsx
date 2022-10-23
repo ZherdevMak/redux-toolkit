@@ -1,14 +1,22 @@
 import React from 'react'
-import {action} from '@storybook/addon-actions'
 import App from './App'
-import {ReduxStoreProviderDecorator} from '../stories/decorators/ReduxStoreProviderDecorator'
+import {ReduxStoreProviderDecorator, storyBookStore} from '../stories/decorators/ReduxStoreProviderDecorator'
+import {BrowserRouter, HashRouter} from "react-router-dom";
+import {Provider} from "react-redux";
 
-export default {
-    title: 'App Stories',
-    component: App,
-    decorators: [ReduxStoreProviderDecorator]
-}
+
 
 export const AppBaseExample = (props: any) => {
-    return (<App demo={true} />)
+  return (<Provider store={storyBookStore}>
+    <HashRouter>
+      <App demo={true}/>
+    </HashRouter>
+    </Provider>
+  )
 }
+export default {
+  title: 'App Stories',
+  component: AppBaseExample,
+  decorators: [ReduxStoreProviderDecorator]
+}
+

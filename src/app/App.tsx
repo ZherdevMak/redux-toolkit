@@ -25,7 +25,7 @@ type PropsType = {
   demo?: boolean
 }
 
-function App({demo = false}: PropsType) {
+function App({demo}: PropsType) {
   const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
   const isInitialized = useSelector<AppRootStateType, boolean>((state) => state.app.isInitialized)
   const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
@@ -47,9 +47,6 @@ function App({demo = false}: PropsType) {
   }
 
   return (
-    <BrowserRouter>
-
-
       <div className="App">
         <ErrorSnackbar/>
         <AppBar position="static">
@@ -66,13 +63,11 @@ function App({demo = false}: PropsType) {
         </AppBar>
         <Container fixed>
           <Routes>
-            <Route path={'/'} element={<TodolistsList/>}/>
+            <Route path={'/'} element={<TodolistsList demo={demo}/>}/>
             <Route path={'/login'} element={<Login/>}/>
             </Routes>
         </Container>
       </div>
-      x
-    </BrowserRouter>
 )
 }
 
